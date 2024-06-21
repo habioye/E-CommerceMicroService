@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+cart-service/.mvn/wrapper/maven-wrapper.properties
+
+cart-service/mvnw
+
+cart-service/mvnw.cmd
