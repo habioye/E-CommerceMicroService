@@ -5,6 +5,8 @@ import com.example.cart_service.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class CartService {
 
@@ -15,8 +17,20 @@ public class CartService {
         return repo.save(cart);
     }
 
-    public Cart getCartByUserId(int userId){
-        return repo.findByUserId(userId);
+    public ArrayList getAllCarts() {
+        return (ArrayList) repo.findAll();
+    }
+
+    public Cart getCartByUserId(int userId) {
+        return repo.findCartByUserId(userId);
+    }
+
+    public Cart updateCart(Cart cart) {
+        return repo.save(cart);
+    }
+
+    public void deleteCartByUserId(int userId) {
+        repo.deleteCartByUserId(userId);
     }
 
 }
