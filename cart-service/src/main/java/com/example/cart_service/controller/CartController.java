@@ -2,7 +2,6 @@ package com.example.cart_service.controller;
 
 import com.example.cart_service.entity.Cart;
 import com.example.cart_service.service.CartService;
-import jakarta.ws.rs.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ public class CartController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addCart(@RequestBody int userId) {
+    public ResponseEntity<?> addCart(@RequestBody long userId) {
 
         Cart result = service.addCart(new Cart(userId));
 
@@ -38,7 +37,7 @@ public class CartController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<?> getCartByUserId(@PathVariable int userId) {
+    public ResponseEntity<?> getCartByUserId(@PathVariable long userId) {
 
         Cart result = service.getCartByUserId(userId);
 
@@ -49,23 +48,23 @@ public class CartController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<?> addProductToCart(@PathVariable int userId, @RequestBody int productId) {
+    public ResponseEntity<?> addItemToCart(@PathVariable long userId, @RequestBody long itemId) {
 
         Cart result = service.getCartByUserId(userId);
         if (result == null)
             return ResponseEntity.status(404).body("Error: Failed to find cart with user ID: " + userId);
 
-        // Add new product ID to cart
-        ArrayList<Integer> productIds = result.getProductIds();
-        productIds.add(productId);
-        result.setProductIds(productIds);
+        // Add new item ID to cart
+        ArrayList<Long> itemIds = result.getItemIds();
+        itemIds.add(itemId);
+        result.setItemIds(itemIds);
         result = service.updateCart(result);
 
         return ResponseEntity.ok(result);
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<?> deleteCartByUserId(@PathVariable int userId) {
+    public ResponseEntity<?> deleteCartByUserId(@PathVariable long userId) {
 
         Cart result = service.getCartByUserId(userId);
         if (result == null)
@@ -74,5 +73,7 @@ public class CartController {
         service.deleteCartByUserId(userId);
         return ResponseEntity.ok("Cart successfully deleted");
     }
+
+
 
 }

@@ -14,15 +14,15 @@ public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(unique = true)
-    private int userId;
+    private long userId;
 
-    private ArrayList<Integer> productIds;
+    private ArrayList<Long> itemIds;
 
-    public Cart(int userId) {
-        this(0, userId, new ArrayList<Integer>());
+    public Cart(long userId) {
+        this(0, userId, new ArrayList<Long>());
     }
 
 }

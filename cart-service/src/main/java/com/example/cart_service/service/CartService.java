@@ -21,7 +21,7 @@ public class CartService {
         return (ArrayList) repo.findAll();
     }
 
-    public Cart getCartByUserId(int userId) {
+    public Cart getCartByUserId(long userId) {
         return repo.findCartByUserId(userId);
     }
 
@@ -29,7 +29,7 @@ public class CartService {
         return repo.save(cart);
     }
 
-    public void deleteCartByUserId(int userId) {
+    public void deleteCartByUserId(long userId) {
         repo.deleteCartByUserId(userId);
     }
 
