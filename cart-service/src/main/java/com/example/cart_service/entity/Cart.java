@@ -19,10 +19,10 @@ public class Cart {
     @Column(unique = true)
     private int userId;
 
-    private ArrayList<Object> products;
+    private ArrayList<Integer> productIds;
 
     public Cart(int userId) {
-        this(0, userId, new ArrayList<Object>());
+        this(0, userId, new ArrayList<Integer>());
     }
 
 }
