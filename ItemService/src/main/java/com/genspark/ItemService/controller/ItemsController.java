@@ -1,7 +1,6 @@
 package com.genspark.ItemService.controller;
 
-import com.genspark.ItemService.client.ItemClient;
-import com.genspark.ItemService.repository.ItemRepository;
+import com.genspark.ItemService.Service.ItemService;
 import com.genspark.ItemService.entity.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +14,35 @@ public class ItemsController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ItemsController.class);
 
     @Autowired
-    private ItemRepository repository;
+    private ItemService service;
+
+    @GetMapping
+    public List<Items> findAll(@RequestBody Items item) {
+        LOGGER.info("Items found: {}", item);
+        return service.getAllItems();
+    }
 
     @PostMapping
-    public List<Items> findAll(@RequestBody Items items) {
-        LOGGER.info("Items found: {}", items);
-        return repository.findAll();
+    public Items addItem(@RequestBody Items item){
+        LOGGER.info("Items added: {}", item);
+        return service.addItems(item);
     }
+
+    @PutMapping
+    public Items updateItem(@RequestBody Items item){
+        LOGGER.info("Items updated: {}", item);
+        return service.updateItems(item);
+    }
+
+    @DeleteMapping
+    public Items deleteItem(@RequestBody Items item){
+        LOGGER.info("Items deleted: {}", item);
+        return service.updateItems(item);
+    }
+
+
+
+
 
 
 
