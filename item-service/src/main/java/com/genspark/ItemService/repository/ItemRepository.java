@@ -19,6 +19,8 @@ public interface ItemRepository extends JpaRepository<Items, Long> {
     @Query("SELECT i from Items i WHERE LOWER(i.vendorId) LIKE LOWER(CONCAT('%', :vendorId, '%'))")
     List<Items> findByVendorId(int vendorId);
 
+    @Query("SELECT i from Items i WHERE LOWER(i.score) LIKE LOWER(CONCAT('%', :score, '%'))")
+    List<Items> findByScore(int score);
 
 
 }

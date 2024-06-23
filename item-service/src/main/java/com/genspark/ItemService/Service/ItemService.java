@@ -27,10 +27,6 @@ public class ItemService {
         return  repo.findAll();
     }
 
-//    public Items getItemsByUserId(long userId) {
-//        return repo.findItemsByUserId(userId);
-//    }
-
     public Items updateItems(Items Items) {
         return repo.save(Items);
     }
@@ -50,5 +46,8 @@ public class ItemService {
         return repo.findByReviewId(reviewId);
     }
 
+    public List<Items> getByScore(int score){
+        return repo.findByScore(score);
+    }
 
 }

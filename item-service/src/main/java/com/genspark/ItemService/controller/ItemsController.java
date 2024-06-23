@@ -32,6 +32,11 @@ public class ItemsController {
         return this.service.getByReviewId(ReviewId);
     }
 
+    @GetMapping("/items/{score}")
+    public List<Items> findByScore(@PathVariable int score){
+        return this.service.getByScore(score);
+    }
+
     @PostMapping
     public Items addItem(@RequestBody Items item){
         LOGGER.info("Items added: {}", item);
