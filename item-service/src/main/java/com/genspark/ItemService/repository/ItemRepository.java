@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
+
 public interface ItemRepository extends JpaRepository<Items, Long> {
 
     List<Items> findByItemId(Long itemId);
@@ -22,5 +24,10 @@ public interface ItemRepository extends JpaRepository<Items, Long> {
     @Query("SELECT i from Items i WHERE LOWER(i.score) LIKE LOWER(CONCAT('%', :score, '%'))")
     List<Items> findByScore(int score);
 
+    @Query("SELECT i from Items i WHERE LOWER(i.price) LIKE LOWER(CONCAT('%', :price, '%'))")
+    List<Items> findByPrice(int price);
+
+    @Query("SELECT DISTINCT Items.description FROM Items item")
+    List<String> findByDescription();
 
 }

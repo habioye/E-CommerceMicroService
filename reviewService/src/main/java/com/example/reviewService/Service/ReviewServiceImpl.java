@@ -31,4 +31,9 @@ public class ReviewServiceImpl {
     public List<Review> getProductReview(Long productId){
         return this.reviewDAO.findByProductId(productId);
     }
+
+    public String deleteReview(Long reviewId) {
+        this.reviewDAO.deleteById(reviewId);
+        return "Review has been deleted";
+    }
 }

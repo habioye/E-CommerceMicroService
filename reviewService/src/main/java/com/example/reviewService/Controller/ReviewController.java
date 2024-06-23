@@ -18,18 +18,27 @@ public class ReviewController {
 
     @GetMapping("/")
     public List<Review> getReviews(){
+        //gets all the reviews
         return this.reviewService.getReviews();
     }
 
     @PostMapping
     public Review addReview(@RequestBody Review review){
+        //add a review
         return this.reviewService.createReview(review);
     }
 
     @PutMapping
     public Review updateReview(@RequestBody Review review){
+
         return this.reviewService.updateReview(review);
     }
+
+    @DeleteMapping
+    public String deleteReview(@RequestBody Long reviewId){
+        return this.reviewService.deleteReview(reviewId);
+    }
+
     @GetMapping("/product/{productId}")
     public List<Review> getProductReview(@PathVariable Long productId){
         return this.reviewService.getProductReview(productId);
