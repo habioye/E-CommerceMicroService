@@ -17,9 +17,8 @@ import lombok.Setter;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long reviewId;
-    private int score;
-    private long itemId;
     private long userId;
-    private String username;
+    private String userName;
+    private String firstName;
+    private String lastName;
 }
