@@ -16,10 +16,20 @@ public class ItemsController {
     @Autowired
     private ItemService service;
 
-    @GetMapping
+    @GetMapping("/items")
     public List<Items> findAll(@RequestBody Items item) {
         LOGGER.info("Items found: {}", item);
         return service.getAllItems();
+    }
+
+    @GetMapping("/items/{vendorId}")
+    public List<Items> findByVendorId(@PathVariable int vendorId){
+        return this.service.getByVendorId(vendorId);
+    }
+
+    @GetMapping("/items/{reviewId}")
+    public List<Items> findByReviewId(@PathVariable int ReviewId){
+        return this.service.getByReviewId(ReviewId);
     }
 
     @PostMapping
@@ -34,11 +44,13 @@ public class ItemsController {
         return service.updateItems(item);
     }
 
+    // delete a item
     @DeleteMapping
-    public Items deleteItem(@RequestBody Items item){
-        LOGGER.info("Items deleted: {}", item);
-        return service.updateItems(item);
+    public String deleteItem(@PathVariable Long ItemId){
+        return this.service.deleteItem(ItemId);
     }
+
+
 
 
 

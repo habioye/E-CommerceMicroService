@@ -10,10 +10,12 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 
 public class Items {
-
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long itemId;
     private String description;
     private int price;
     private int reviewId;
