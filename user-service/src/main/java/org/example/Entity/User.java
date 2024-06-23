@@ -14,11 +14,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
     private String userName;
     private String firstName;
     private String lastName;
+    private String userPrivilege;
 }
