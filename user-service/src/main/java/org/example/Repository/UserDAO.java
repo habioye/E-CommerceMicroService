@@ -1,10 +1,10 @@
 package org.example.Repository;
 
-import com.example.reviewService.Entity.Review;
+import org.example.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ReviewDAO extends JpaRepository<Review, Long> {
-    List<Review> findByProductId(Long productId);
+public interface UserDAO extends JpaRepository<User, Long> {
+    List<User> findByUserId(Long productId);
 }
