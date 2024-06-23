@@ -22,6 +22,12 @@ public class ItemsController {
         return service.getAllItems();
     }
 
+    @GetMapping("/items/{id}")
+    public Items findById(Long itemId){
+        LOGGER.info("Receiving item by id: {}", itemId);
+        return service.getById(itemId);
+    }
+
     @GetMapping("/items/{vendorId}")
     public List<Items> findByVendorId(@PathVariable int vendorId){
         return this.service.getByVendorId(vendorId);
@@ -34,7 +40,14 @@ public class ItemsController {
 
     @GetMapping("/items/{score}")
     public List<Items> findByScore(@PathVariable int score){
+
         return this.service.getByScore(score);
+    }
+
+    @GetMapping("/items/{price}")
+    public List<Items> findByPrice(@PathVariable int price){
+        LOGGER.info("Receiving item by price: {}", price);
+        return this.service.getByPrice(price);
     }
 
     @PostMapping
