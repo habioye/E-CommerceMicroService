@@ -1,0 +1,17 @@
+spring:
+  application:
+    name:  item-service
+  config:
+    import: "optional:configserver:http://localhost:8088"
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce?createDatabaseIfNotExist=true
+    username: root
+    password: blast450
+    driver-class: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
