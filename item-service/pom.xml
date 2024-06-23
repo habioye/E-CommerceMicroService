@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.genspark</groupId>
-	<artifactId>ItemService</artifactId>
+	<artifactId>item-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ItemService</name>
 	<description>Demo project for Spring Boot</description>
