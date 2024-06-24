@@ -1,8 +1,7 @@
-package org.example.Service;
+package com.example.Service;
 
-import org.example.Entity.User;
-import org.example.Repository.UserDAO;
-import org.example.Service.UserService;
+import com.example.Repository.UserDAO;
+import com.example.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +25,8 @@ public class UserService {
     public User getOneUser(Long reviewId){
         return this.userDAO.findById(reviewId).orElseThrow(()->new RuntimeException("No reviews found"));
     }
-    public User deleteUser() {
-        return this.userDAO.deleteUser
+    public void deleteById(Long id) {
+        this.userDAO.deleteById(id);
     }
 
 }

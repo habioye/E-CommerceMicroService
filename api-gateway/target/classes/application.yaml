@@ -19,7 +19,19 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: employee-service
-          uri: lb://employee-service
+        - id: cart-service
+          uri: lb://cart-service
           predicates:
-            - Path=/employee/**
+            - Path=/cart/**
+        - id: item-service
+          uri: lb://item-service
+          predicates:
+            - Path=/items/**
+        - id: reviewService
+          uri: lb://reviewService
+          predicates:
+            - Path=/review/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/*

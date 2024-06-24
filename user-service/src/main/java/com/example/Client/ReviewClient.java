@@ -1,16 +1,17 @@
 package com.example.Client;
 
 
-import com.example.Entity.Review;
+import com.example.reviewService.Entity.Review;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.service.annotation.GetExchange;
-import org.springframework.web.service.annotation.HttpExchange;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.service.annotation.*;
 
 import java.util.List;
 
 @HttpExchange
 public interface ReviewClient {
-    //Gives remaining add/update/delte methods for affecting reviews.
+
+    //Gives remaining add/update/delete methods for affecting reviews.
     @PostExchange("/review")
     public Review addReview(@RequestBody Review review);
 
@@ -18,6 +19,6 @@ public interface ReviewClient {
     public Review updateReview(@RequestBody Review review);
 
     @DeleteExchange("review/{reviewId}")
-    public String deleteReview(@PathVariable Long reviewId);
+    public String deleteById(@PathVariable Long reviewId);
 
 }

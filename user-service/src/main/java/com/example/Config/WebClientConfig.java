@@ -1,6 +1,6 @@
-package org.example.Config;
+package com.example.Config;
 
-import org.example.Client.ReviewClient;
+import com.example.Client.ReviewClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.reactive.LoadBalancedExchangeFilterFunction;

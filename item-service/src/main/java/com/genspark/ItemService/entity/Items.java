@@ -10,8 +10,6 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Getter
 @Setter
-
-
 public class Items {
 
     @Id
