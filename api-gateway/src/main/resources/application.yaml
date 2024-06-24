@@ -23,7 +23,3 @@ spring:
           uri: lb://employee-service
           predicates:
             - Path=/employee/**
-        - id: item-service
-          uri: lb://item-service
-          predicates:
-            - Path=/item/**

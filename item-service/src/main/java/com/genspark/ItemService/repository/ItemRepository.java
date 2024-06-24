@@ -24,7 +24,7 @@ public interface ItemRepository extends JpaRepository<Items, Long> {
     List<Items> findByScore(double score);
 
     @Query(value = "SELECT i from Items i WHERE i.price LIKE price", nativeQuery = true)
-    List<Items> findByPrice(int price);
+    List<Items> findByPrice(double price);
 
     @Query(value = "SELECT DISTINCT Items.description FROM Items item", nativeQuery = true)
     List<Items> findByDescription(String description);
