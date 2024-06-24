@@ -21,7 +21,7 @@ public class Items {
     private String description;
 
     private int price;
-
+    
     private int reviewId;
 
     private int vendorId;

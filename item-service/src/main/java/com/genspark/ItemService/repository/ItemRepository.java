@@ -9,25 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-
 public interface ItemRepository extends JpaRepository<Items, Long> {
 
     List<Items> findByItemId(Long itemId);
 
     // Retrieves list of sellers where name matches
-    @Query("SELECT i from Items i WHERE LOWER(i.reviewId) LIKE LOWER(CONCAT('%', :reviewId, '%'))")
+    @Query(value = "SELECT i from Items i WHERE i.reviewId LIKE reviewId", nativeQuery = true)
     List<Items> findByReviewId(int reviewId);
 
-    @Query("SELECT i from Items i WHERE LOWER(i.vendorId) LIKE LOWER(CONCAT('%', :vendorId, '%'))")
+    @Query(value = "SELECT i from Items i WHERE i.vendorId LIKE vendorId ", nativeQuery = true)
     List<Items> findByVendorId(int vendorId);
 
-    @Query("SELECT i from Items i WHERE LOWER(i.score) LIKE LOWER(CONCAT('%', :score, '%'))")
-    List<Items> findByScore(int score);
+    @Query(value = "SELECT i from Items i WHERE i.score LIKE score", nativeQuery = true)
+    List<Items> findByScore(double score);
 
-    @Query("SELECT i from Items i WHERE LOWER(i.price) LIKE LOWER(CONCAT('%', :price, '%'))")
+    @Query(value = "SELECT i from Items i WHERE i.price LIKE price", nativeQuery = true)
     List<Items> findByPrice(int price);
 
-    @Query("SELECT DISTINCT Items.description FROM Items item")
-    List<String> findByDescription();
+    @Query(value = "SELECT DISTINCT Items.description FROM Items item", nativeQuery = true)
+    List<Items> findByDescription(String description);
 
 }
