@@ -10,18 +10,9 @@ public class Items {
 
     private Long itemId;
     private String description;
-    private int price;
+    private double price;
     private int reviewId;
     private int vendorId;
     private double score;
-
-    @Override
-    public String toString() {
-        return "Items{" +
-                "description='" + description + '\'' +
-                ", price=" + price +
-                ", score=" + score +
-                '}';
-    }
 
 }
