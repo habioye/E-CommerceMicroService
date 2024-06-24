@@ -1,31 +1,32 @@
 package org.example.Service;
 
-import com.example.reviewService.Entity.Review;
-import com.example.reviewService.Repository.ReviewDAO;
+import org.example.Entity.User;
+import org.example.Repository.UserDAO;
+import org.example.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ReviewServiceImpl {
+public class UserService {
     @Autowired
-    private ReviewDAO reviewDAO;
+    private UserDAO userDAO;
 //    public ReviewServiceImpl(ReviewDAO reviewDAO){
 //        this.reviewDAO = reviewDAO;
 //    }
 
-    public Review createReview(Review review){
-        return this.reviewDAO.save(review);
+    public User createUser(User user){
+        return this.userDAO.save(user);
     }
-    public Review updateReview(Review review){
-        return this.reviewDAO.save(review);
+    public User updateUser(User user){
+        return this.userDAO.save(user);
     }
-    public List<Review> getReviews(){
-        return this.reviewDAO.findAll();
+    public List<User> getUsers(){
+        return this.userDAO.findAll();
     }
-    public Review getOneReview(Long reviewId){
-        return this.reviewDAO.findById(reviewId).orElseThrow(()->new RuntimeException("No reviews found"));
+    public User getOneUser(Long reviewId){
+        return this.userDAO.findById(reviewId).orElseThrow(()->new RuntimeException("No reviews found"));
     }
 
     public List<Review> getProductReview(Long productId){
