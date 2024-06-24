@@ -19,12 +19,15 @@ public class Cart {
     @Column(unique = true)
     private long userId;
 
-    private ArrayList<Long> itemIds;
+    // Holds an array of tuples
+    // The first value holds the item ID
+    // The second value holds the quantity
+    private ArrayList<ArrayList<Long>> itemIds;
 
     // Takes just a user ID
     // Cart ID will be auto-generated
     public Cart(long userId) {
-        this(0, userId, new ArrayList<Long>());
+        this(0, userId, new ArrayList<ArrayList<Long>>());
     }
 
 }
