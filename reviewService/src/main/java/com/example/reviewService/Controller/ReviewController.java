@@ -29,22 +29,25 @@ public class ReviewController {
 
     @PutMapping
     public Review updateReview(@RequestBody Review review){
-
+        //updates an existing review
         return this.reviewService.updateReview(review);
     }
 
     @DeleteMapping("/{reviewId}")
     public String deleteReview(@PathVariable Long reviewId){
+        //deletes review by reviewId
         return this.reviewService.deleteReview(reviewId);
     }
 
     @GetMapping("/product/{itemId}")
     public List<Review> getProductReview(@PathVariable Long itemId){
+        //gets the review by productId
         return this.reviewService.getItemReview(itemId);
     }
 
     @GetMapping("/{reviewId}")
     public Review getOneReview(@PathVariable Long reviewId){
+        //gets a review by the id
         return this.reviewService.getOneReview(reviewId);
 
     }
