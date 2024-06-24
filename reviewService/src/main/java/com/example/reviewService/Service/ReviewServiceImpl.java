@@ -28,8 +28,8 @@ public class ReviewServiceImpl {
         return this.reviewDAO.findById(reviewId).orElseThrow(()->new RuntimeException("No reviews found"));
     }
 
-    public List<Review> getProductReview(Long productId){
-        return this.reviewDAO.findByProductId(productId);
+    public List<Review> getItemReview(Long itemId){
+        return this.reviewDAO.findByItemId(itemId);
     }
 
     public String deleteReview(Long reviewId) {
