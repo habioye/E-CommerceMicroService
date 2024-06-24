@@ -10,20 +10,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/review")
+@RequestMapping("/user")
 public class ReviewController {
 
     @Autowired
-    private ReviewServiceImpl reviewService;
+    private UserService userService;
+    @Autowired
+    private EmployeeClient employeeClient;
 
+    @PutMapping("/user")
+    public User 
     @GetMapping("/")
-    public List<Review> getReviews(){
-        return this.reviewService.getReviews();
+    public List<User> getUsers(){
+        return this.userService.getUsers();
     }
 
     @PostMapping
     public Review addReview(@RequestBody Review review){
-        return this.reviewService.createReview(review);
+        return ReviewClient.addReview(review);
     }
 
     @PutMapping
