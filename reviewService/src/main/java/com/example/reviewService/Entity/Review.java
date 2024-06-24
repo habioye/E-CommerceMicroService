@@ -18,8 +18,16 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long reviewId;
-    private int score;
+    private double score;
     private long itemId;
     private long userId;
     private String username;
+
+    public Review(double score, long itemId, String username, long userId) {
+        this.score = score;
+        this.itemId = itemId;
+        this.username = username;
+        this.userId = userId;
+
+    }
 }

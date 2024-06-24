@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReviewServiceImpl {
@@ -25,11 +26,16 @@ public class ReviewServiceImpl {
         return this.reviewDAO.findAll();
     }
     public Review getOneReview(Long reviewId){
-        return this.reviewDAO.findById(reviewId).orElseThrow(()->new RuntimeException("No reviews found"));
+        Optional<Review> result = this.reviewDAO.findById(reviewId);
+        if(result.isPresent()){
+            return result.get();
+        }else{
+            throw new RuntimeException("No reviews found");
+        }
     }
 
-    public List<Review> getProductReview(Long productId){
-        return this.reviewDAO.findByProductId(productId);
+    public List<Review> getItemReview(Long itemId){
+        return this.reviewDAO.findByItemId(itemId);
     }
 
     public String deleteReview(Long reviewId) {
