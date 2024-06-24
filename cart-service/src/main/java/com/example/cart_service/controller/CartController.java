@@ -3,7 +3,7 @@ package com.example.cart_service.controller;
 import com.example.cart_service.entity.Cart;
 import com.example.cart_service.entity.Items;
 import com.example.cart_service.service.CartService;
-import com.example.cart_service.service.ItemsClient;
+import com.example.cart_service.client.ItemsClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
