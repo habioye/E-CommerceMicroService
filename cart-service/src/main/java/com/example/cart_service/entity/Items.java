@@ -15,4 +15,13 @@ public class Items {
     private int vendorId;
     private double score;
 
+    @Override
+    public String toString() {
+        return "Items{" +
+                "description='" + description + '\'' +
+                ", price=" + price +
+                ", score=" + score +
+                '}';
+    }
+
 }

@@ -52,7 +52,7 @@ public class ItemsController {
     }
 
     @GetMapping("/items/{price}")
-    public List<Items> findByPrice(@PathVariable int price){
+    public List<Items> findByPrice(@PathVariable double price){
         LOGGER.info("Receiving item by price: {}", price);
         return this.service.getByPrice(price);
     }
