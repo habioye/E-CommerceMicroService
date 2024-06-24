@@ -37,3 +37,5 @@ cart-service/.mvn/wrapper/maven-wrapper.properties
 cart-service/mvnw
 
 cart-service/mvnw.cmd
+
+cart-service/logs/

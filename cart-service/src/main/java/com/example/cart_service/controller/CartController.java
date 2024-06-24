@@ -15,11 +15,6 @@ public class CartController {
     @Autowired
     CartService service;
 
-    @GetMapping("")
-    public String hello() {
-        return "Hello world!";
-    }
-
     @PostMapping("")
     public ResponseEntity<?> addCart(@RequestBody long userId) {
 

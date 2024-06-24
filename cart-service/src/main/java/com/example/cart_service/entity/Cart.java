@@ -21,6 +21,8 @@ public class Cart {
 
     private ArrayList<Long> itemIds;
 
+    // Takes just a user ID
+    // Cart ID will be auto-generated
     public Cart(long userId) {
         this(0, userId, new ArrayList<Long>());
     }

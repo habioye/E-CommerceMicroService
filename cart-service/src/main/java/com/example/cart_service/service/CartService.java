@@ -13,6 +13,10 @@ public class CartService {
     @Autowired
     private CartRepository repo;
 
+    // Inject a feign client of the item-service
+    @Autowired
+    private ItemsClient itemsClient;
+
     public Cart addCart(Cart cart) {
         return repo.save(cart);
     }
