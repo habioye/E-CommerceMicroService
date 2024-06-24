@@ -40,7 +40,7 @@ public class ItemService {
         this.repo.deleteById(itemID);
         return "Item Deleted Successfully";
     }
-    public Items getById(Long itemID) {
+    public Items getByItemId(Long itemID) {
         Optional<Items> i = this.repo.findById(itemID);
         Items item = null;
         if (i.isPresent()) {
@@ -65,7 +65,7 @@ public class ItemService {
         return repo.findByPrice(price);
     }
     public List<Items> getByDescription(String description){
-        return repo.findByDescription(description);
+        return repo.findByDescription( description);
     }
 
 }
