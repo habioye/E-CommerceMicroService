@@ -34,7 +34,7 @@ public class ReviewController {
         return this.reviewService.updateReview(review);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{reviewId}")
     public String deleteReview(@RequestBody Long reviewId){
         return this.reviewService.deleteReview(reviewId);
     }
