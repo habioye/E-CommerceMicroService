@@ -61,7 +61,7 @@ public class ItemService {
         return repo.findByScore(score);
     }
 
-    public List<Items> getByPrice(int price){
+    public List<Items> getByPrice(double price){
         return repo.findByPrice(price);
     }
     public List<Items> getByDescription(String description){
