@@ -3,7 +3,6 @@ package com.example.reviewService.Controller;
 
 import com.example.reviewService.Entity.Review;
 import com.example.reviewService.Service.ReviewServiceImpl;
-import jakarta.ws.rs.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,9 +38,9 @@ public class ReviewController {
         return this.reviewService.deleteReview(reviewId);
     }
 
-    @GetMapping("/product/{productId}")
-    public List<Review> getProductReview(@PathVariable Long productId){
-        return this.reviewService.getProductReview(productId);
+    @GetMapping("/product/{itemId}")
+    public List<Review> getProductReview(@PathVariable Long itemId){
+        return this.reviewService.getItemReview(itemId);
     }
 
     @GetMapping("/{reviewId}")
