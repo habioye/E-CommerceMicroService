@@ -36,6 +36,7 @@ public class ReviewController {
     @DeleteMapping("/{reviewId}")
     public String deleteReview(@PathVariable Long reviewId){
         //deletes review by reviewId
+
         return this.reviewService.deleteReview(reviewId);
     }
 
@@ -50,6 +51,10 @@ public class ReviewController {
         //gets a review by the id
         return this.reviewService.getOneReview(reviewId);
 
+    }
+    @GetMapping("/user/{userId}")
+    public List<Review> getReviewByUserId(@PathVariable Long userId){
+        return this.reviewService.getReviewByUserId(userId);
     }
 
 
