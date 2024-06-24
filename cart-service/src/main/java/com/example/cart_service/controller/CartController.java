@@ -77,35 +77,35 @@ public class CartController {
     @PutMapping("/{userId}")
     public ResponseEntity<?> addItemToCart(@PathVariable long userId, @RequestBody long newItemId) {
 
-        Cart result = service.getCartByUserId(userId);
-        if (result == null)
+        Cart cart = service.getCartByUserId(userId);
+        if (cart == null)
             return ResponseEntity.status(404).body("Error: Failed to find cart with user ID: " + userId);
 
         // Check if cart already contains new item
         // If it does, increment item count
-        ArrayList<ArrayList<Long>> cartItems = result.getItemIds();
+        ArrayList<ArrayList<Long>> cartItems = cart.getItemIds();
         for (ArrayList<Long> cartItem : cartItems) {
             if (cartItem.get(0) == newItemId) {
-                long count = cartItem.get(1);
-                cartItem.set(1, count + 1);
+                long quantity = cartItem.get(1);   // Index 1: quantity
+                cartItem.set(1, quantity + 1);
 
-                result.setItemIds(cartItems);
-                result = service.updateCart(result);
+                cart.setItemIds(cartItems);
+                cart = service.updateCart(cart);
 
-                return ResponseEntity.ok(result);
+                return ResponseEntity.ok(cart);
             }
         }
 
         // Add a new item ID to cart
         ArrayList<Long> newItem = new ArrayList<>();
-        newItem.add(newItemId);  // Item ID
-        newItem.add(1L);         // Item quantity
+        newItem.add(newItemId);  // Index 0: Item ID
+        newItem.add(1L);         // Index 1: Item quantity
 
         cartItems.add(newItem);
-        result.setItemIds(cartItems);
-        result = service.updateCart(result);
+        cart.setItemIds(cartItems);
+        cart = service.updateCart(cart);
 
-        return ResponseEntity.ok(result);
+        return ResponseEntity.ok(cart);
     }
 
     // Delete a cart
