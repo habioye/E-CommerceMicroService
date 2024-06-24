@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/items")
+@RequestMapping("/")
 public class ItemsController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ItemsController.class);
 
