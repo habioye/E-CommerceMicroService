@@ -31,3 +31,7 @@ spring:
           uri: lb://reviewService
           predicates:
             - Path=/review/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/*
