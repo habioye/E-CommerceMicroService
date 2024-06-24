@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ReviewDAO extends JpaRepository<Review, Long> {
     List<Review> findByItemId(Long itemId);
+    List<Review> findByUserId(Long UserId);
 }
