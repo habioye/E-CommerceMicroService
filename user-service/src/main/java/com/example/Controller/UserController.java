@@ -18,26 +18,51 @@ public class ReviewController {
     @Autowired
     private ReviewClient reviewClient;
 
-    @PostMapping("/user")
+    @PostMapping("/createUser")
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
-    @GetMapping("/")
+    @GetMapping("/getUsers")
     public List<User> getUsers(){
         return this.userService.getUsers();
     }
 
-    @PostMapping
+    @GetMapping("/getUser/{id}")
+    public User getUserById(@Pathvariable Long id) {
+
+    }
+
+    @PostMapping("/addReview")
     public Review addReview(@RequestBody Review review){
         return ReviewClient.addReview(review);
     }
 
-    @PutMapping
+    @PutMapping("/updateReview")
     public Review updateReview(@RequestBody Review review){
-        return this.reviewService.updateReview(review);
+        return ReviewClient.updateReview(review);
     }
-    @GetMapping("/product/{productId}")
+
+    @DeleteMapping("/deleteReview")
+    public String deleteReview(@PathVariable Long reviewId) {
+        ReviewClient.deleteById(reviewId);
+        return "Review has been deleted";
+    }
+
+
+    @PutMapping("/updateUser")
+            public User updateUser(RequestBody User user) {
+        return userService.updateUser(user);
+    }
+
+    @DeleteMapping("/delete/{userId}")
+    public String deleteuser(@PathVariable Long userId){
+        //deletes user by userId
+
+        return this.userService.deleteById(userId);
+    }
+
+
     public List<Review> getProductReview(@PathVariable Long productId){
         return this.reviewService.getProductReview(productId);
     }

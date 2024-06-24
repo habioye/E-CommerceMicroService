@@ -28,8 +28,8 @@ public class UserService {
     public User getOneUser(Long reviewId){
         return this.userDAO.findById(reviewId).orElseThrow(()->new RuntimeException("No reviews found"));
     }
-
-    public List<Review> getProductReview(Long productId){
-        return this.reviewDAO.findByProductId(productId);
+    public User deleteUser() {
+        return this.userDAO.deleteUser
     }
+
 }
