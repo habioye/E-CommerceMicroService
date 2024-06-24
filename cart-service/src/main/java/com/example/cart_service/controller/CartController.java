@@ -54,6 +54,7 @@ public class CartController {
     }
 
     // Find the items in a user's cart
+    // Makes requests to Item service for each item ID
     @GetMapping("/{userId}/items")
     public ResponseEntity<?> getCartItemsByUserId(@PathVariable long userId) {
 
@@ -63,28 +64,48 @@ public class CartController {
             return ResponseEntity.status(404).body("Error: Failed to find cart with user ID: " + userId);
 
         ArrayList<Items> items = new ArrayList<>();
-        for (long itemId : result.getItemIds()) {
-            items.add(itemsClient.findById(itemId));
+        ArrayList<ArrayList<Long>> cartItems = result.getItemIds();
+        for (ArrayList<Long> cartItem : cartItems) {
+            items.add(itemsClient.findById(cartItem.get(0)));   // Index 0 holds the item's ID
         }
 
         return ResponseEntity.ok(items);
     }
 
     // Add an item to user's cart
+    // If item is already in cart, increment quantity
     @PutMapping("/{userId}")
-    public ResponseEntity<?> addItemToCart(@PathVariable long userId, @RequestBody long itemId) {
+    public ResponseEntity<?> addItemToCart(@PathVariable long userId, @RequestBody long newItemId) {
 
-        Cart result = service.getCartByUserId(userId);
-        if (result == null)
+        Cart cart = service.getCartByUserId(userId);
+        if (cart == null)
             return ResponseEntity.status(404).body("Error: Failed to find cart with user ID: " + userId);
 
-        // Add new item ID to cart
-        ArrayList<Long> itemIds = result.getItemIds();
-        itemIds.add(itemId);
-        result.setItemIds(itemIds);
-        result = service.updateCart(result);
+        // Check if cart already contains new item
+        // If it does, increment item count
+        ArrayList<ArrayList<Long>> cartItems = cart.getItemIds();
+        for (ArrayList<Long> cartItem : cartItems) {
+            if (cartItem.get(0) == newItemId) {
+                long quantity = cartItem.get(1);   // Index 1: quantity
+                cartItem.set(1, quantity + 1);
 
-        return ResponseEntity.ok(result);
+                cart.setItemIds(cartItems);
+                cart = service.updateCart(cart);
+
+                return ResponseEntity.ok(cart);
+            }
+        }
+
+        // Add a new item ID to cart
+        ArrayList<Long> newItem = new ArrayList<>();
+        newItem.add(newItemId);  // Index 0: Item ID
+        newItem.add(1L);         // Index 1: Item quantity
+
+        cartItems.add(newItem);
+        cart.setItemIds(cartItems);
+        cart = service.updateCart(cart);
+
+        return ResponseEntity.ok(cart);
     }
 
     // Delete a cart
