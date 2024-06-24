@@ -34,7 +34,7 @@ public class ReviewController {
     }
 
     @DeleteMapping("/{reviewId}")
-    public String deleteReview(@RequestBody Long reviewId){
+    public String deleteReview(@PathVariable Long reviewId){
         return this.reviewService.deleteReview(reviewId);
     }
 
