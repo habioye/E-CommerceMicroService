@@ -16,10 +16,13 @@ public class ReviewController {
     @Autowired
     private UserService userService;
     @Autowired
-    private EmployeeClient employeeClient;
+    private ReviewClient reviewClient;
 
-    @PutMapping("/user")
-    public User 
+    @PostMapping("/user")
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
+    }
+
     @GetMapping("/")
     public List<User> getUsers(){
         return this.userService.getUsers();
