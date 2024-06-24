@@ -12,8 +12,6 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends JpaRepository<Items, Long> {
 
-    List<Items> findByItemId(Long itemId);
-
     // Retrieves list of items where review id matches
     @Query(value = "SELECT * from Items i WHERE i.review_Id = :reviewId", nativeQuery = true)
     List<Items> findByReviewId(@Param("reviewId") int reviewId);

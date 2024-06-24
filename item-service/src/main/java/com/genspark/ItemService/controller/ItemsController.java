@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/")
 public class ItemsController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ItemsController.class);
 
@@ -17,8 +16,8 @@ public class ItemsController {
     private ItemService service;
 
     @GetMapping("/items")
-    public List<Items> findAll(@RequestBody Items item) {
-        LOGGER.info("Items found: {}", item);
+    public List<Items> findAll() {
+        LOGGER.info("Finding all items");
         return service.getAllItems();
     }
 
@@ -57,20 +56,20 @@ public class ItemsController {
         return this.service.getByPrice(price);
     }
 
-    @PostMapping
+    @PostMapping("/items")
     public Items addItem(@RequestBody Items item){
         LOGGER.info("Items added: {}", item);
         return service.addItems(item);
     }
 
-    @PutMapping
+    @PutMapping("/items")
     public Items updateItem(@RequestBody Items item){
         LOGGER.info("Items updated: {}", item);
         return service.updateItems(item);
     }
 
     // delete a item
-    @DeleteMapping
+    @DeleteMapping("/items")
     public String deleteItem(@PathVariable Long ItemId){
         LOGGER.info("deleting items of ID: {}", ItemId);
         return this.service.deleteItem(ItemId);
