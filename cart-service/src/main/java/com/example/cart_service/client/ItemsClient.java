@@ -8,7 +8,7 @@ import org.springframework.web.service.annotation.HttpExchange;
 @HttpExchange
 public interface ItemsClient {
 
-    @GetExchange("/items/items/{itemId}")
+    @GetExchange("/items/{itemId}")
     public Items findById(@PathVariable("itemId") long id);
 
 }
