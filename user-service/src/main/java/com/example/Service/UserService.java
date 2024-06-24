@@ -12,9 +12,7 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserDAO userDAO;
-//    public ReviewServiceImpl(ReviewDAO reviewDAO){
-//        this.reviewDAO = reviewDAO;
-//    }
+    // Creates a service from UserDAO
 
     public User createUser(User user){
         return this.userDAO.save(user);

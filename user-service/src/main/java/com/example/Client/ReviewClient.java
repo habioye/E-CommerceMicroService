@@ -10,6 +10,7 @@ import java.util.List;
 
 @HttpExchange
 public interface ReviewClient {
+    //Gives remaining add/update/delte methods for affecting reviews.
     @PostExchange("/review")
     public Review addReview(@RequestBody Review review);
 

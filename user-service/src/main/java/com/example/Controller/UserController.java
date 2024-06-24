@@ -18,6 +18,7 @@ public class ReviewController {
     @Autowired
     private ReviewClient reviewClient;
 
+    // CRUD methods for user
     @PostMapping("/createUser")
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
@@ -33,6 +34,18 @@ public class ReviewController {
 
     }
 
+    @PutMapping("/updateUser")
+            public User updateUser(RequestBody User user) {
+        return userService.updateUser(user);
+    }
+
+    @DeleteMapping("/delete/{userId}")
+    public String deleteuser(@PathVariable Long userId){
+        //deletes user by userId
+
+        return this.userService.deleteById(userId);
+    }
+    // CRUD methods for reviews
     @PostMapping("/addReview")
     public Review addReview(@RequestBody Review review){
         return ReviewClient.addReview(review);
@@ -48,21 +61,6 @@ public class ReviewController {
         ReviewClient.deleteById(reviewId);
         return "Review has been deleted";
     }
-
-
-    @PutMapping("/updateUser")
-            public User updateUser(RequestBody User user) {
-        return userService.updateUser(user);
-    }
-
-    @DeleteMapping("/delete/{userId}")
-    public String deleteuser(@PathVariable Long userId){
-        //deletes user by userId
-
-        return this.userService.deleteById(userId);
-    }
-
-
     public List<Review> getProductReview(@PathVariable Long productId){
         return this.reviewService.getProductReview(productId);
     }

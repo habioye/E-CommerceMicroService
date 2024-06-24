@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class UserAspect {
-    // Controller
+    // Controller before and after
     @Before("execution(* org.example.Controller.UserController.*(..))")
     public void logBeforeBlog(JoinPoint joinPoint){
         log.info("Method:{}", joinPoint.getSignature().getName());
@@ -22,7 +22,7 @@ public class UserAspect {
         log.info("Method:{} Returning:{}", (joinPoint.getSignature().getName()),res);
     }
 
-    // Service
+    // Service before and after
     @Before("execution(* org.example.Service.UserService.*(..))")
     public void logBeforeBlog(JoinPoint joinPoint){
         log.info("Method:{}", joinPoint.getSignature().getName());

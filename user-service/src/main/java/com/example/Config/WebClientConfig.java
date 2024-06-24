@@ -13,10 +13,11 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @Configuration
 public class WebClientConfig {
+    // The filter function
     @Autowired
     private LoadBalancedExchangeFilterFunction filterFunction;
 
-
+    // Helper method
     @Bean
     public WebClient reviewWebClient() {
         return WebClient.builder()
@@ -25,6 +26,7 @@ public class WebClientConfig {
                 .build();
     }
 
+    //Creates a client to use review services
 
     @Bean
     public ReviewClient employeeClient() {
