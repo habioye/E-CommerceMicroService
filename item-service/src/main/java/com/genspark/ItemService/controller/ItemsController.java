@@ -30,17 +30,24 @@ public class ItemsController {
 
     @GetMapping("/items/{vendorId}")
     public List<Items> findByVendorId(@PathVariable int vendorId){
+        LOGGER.info("Receiving items by vendorID: {}", vendorId);
         return this.service.getByVendorId(vendorId);
     }
 
     @GetMapping("/items/{reviewId}")
-    public List<Items> findByReviewId(@PathVariable int ReviewId){
-        return this.service.getByReviewId(ReviewId);
+    public List<Items> findByReviewId(@PathVariable int reviewId){
+        LOGGER.info("Receiving items by reviewID: {}", reviewId);
+        return this.service.getByReviewId(reviewId);
+    }
+    @GetMapping("/items/{description}")
+    public List<Items> findByDescription(@PathVariable String description){
+        LOGGER.info("Receiving items by the description: {}", description);
+        return this.service.getByDescription(description);
     }
 
     @GetMapping("/items/{score}")
-    public List<Items> findByScore(@PathVariable int score){
-
+    public List<Items> findByScore(@PathVariable double score){
+        LOGGER.info("Receiving items with the review score: {}", score);
         return this.service.getByScore(score);
     }
 
@@ -65,6 +72,7 @@ public class ItemsController {
     // delete a item
     @DeleteMapping
     public String deleteItem(@PathVariable Long ItemId){
+        LOGGER.info("deleting items of ID: {}", ItemId);
         return this.service.deleteItem(ItemId);
     }
 

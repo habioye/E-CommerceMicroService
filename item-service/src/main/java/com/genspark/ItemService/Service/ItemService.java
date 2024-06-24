@@ -57,12 +57,15 @@ public class ItemService {
         return repo.findByReviewId(reviewId);
     }
 
-    public List<Items> getByScore(int score){
+    public List<Items> getByScore(double score){
         return repo.findByScore(score);
     }
 
     public List<Items> getByPrice(int price){
         return repo.findByPrice(price);
+    }
+    public List<Items> getByDescription(String description){
+        return repo.findByDescription(description);
     }
 
 }
