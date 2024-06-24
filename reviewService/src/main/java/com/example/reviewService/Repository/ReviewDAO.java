@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ReviewDAO extends JpaRepository<Review, Long> {
-    List<Review> findByProductId(Long productId);
+    List<Review> findByItemId(Long itemId);
+    List<Review> findByUserId(Long UserId);
 }

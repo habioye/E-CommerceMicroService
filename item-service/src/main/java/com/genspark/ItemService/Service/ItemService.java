@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Service
 public class ItemService {
 
     public Logger logger = LoggerFactory.getLogger(ItemsController.class);
@@ -37,6 +40,14 @@ public class ItemService {
         this.repo.deleteById(itemID);
         return "Item Deleted Successfully";
     }
+    public Items getByItemId(Long itemID) {
+        Optional<Items> i = this.repo.findById(itemID);
+        Items item = null;
+        if (i.isPresent()) {
+            item = i.get();
+        }
+        return item;
+    }
 
     public List<Items> getByVendorId(int vendorId){
         return repo.findByVendorId(vendorId);
@@ -46,8 +57,15 @@ public class ItemService {
         return repo.findByReviewId(reviewId);
     }
 
-    public List<Items> getByScore(int score){
+    public List<Items> getByScore(double score){
         return repo.findByScore(score);
+    }
+
+    public List<Items> getByPrice(double price){
+        return repo.findByPrice(price);
+    }
+    public List<Items> getByDescription(String description){
+        return repo.findByDescription( description);
     }
 
 }
